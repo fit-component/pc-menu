@@ -10,8 +10,8 @@ export default class Demo extends React.Component {
         return (
             <Menu height={100}>
                 <MenuItem brand
-                          to="/">组件库</MenuItem>
-                <MenuItem to="/pc/input">输入框组件</MenuItem>
+                          to="/components">组件库</MenuItem>
+                <MenuItem to="/components/pc/input">输入框组件</MenuItem>
                 <MenuItem onClick={this.handleClick.bind(this)}>任意事件</MenuItem>
             </Menu>
         )
