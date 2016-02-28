@@ -15,6 +15,7 @@
   "dependencies": {
     "fit-style": "^1.1.48",
     "react": "^0.14.7",
-    "classnames": "^2.2.1"
+    "classnames": "^2.2.1",
+    "react-router": "^2.0.0"
   }
 }
