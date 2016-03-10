@@ -31,11 +31,23 @@ export default class SubMenu extends React.Component {
         })
     }
 
+    // 展开子元素
+    openChildren() {
+        this.setState({
+            onHover: true
+        })
+
+        // 继续展开父级
+        if (this.props.onOpen) {
+            this.props.onOpen()
+        }
+    }
+
     render() {
-        const {className, inverse, brand, vertical, height, width, children, zIndex, title, ...others} = this.props
+        const {className, inverse, brand, vertical, height, width, children, zIndex, title, globalInverse, ...others} = this.props
 
         let isInverse = inverse
-        if (this.props.globalInverse) {
+        if (globalInverse) {
             isInverse = !inverse
         }
 
@@ -58,7 +70,8 @@ export default class SubMenu extends React.Component {
             return React.cloneElement(item, {
                 minHeight: height,
                 zIndex: zIndex + 1,
-                vertical: vertical
+                vertical: vertical,
+                onOpen: this.openChildren.bind(this)
             })
         })
 
@@ -72,7 +85,8 @@ export default class SubMenu extends React.Component {
             top: zIndex === 0 ? '100%' : 0,
             left: zIndex === 0 ? 0 : '100%',
             position: vertical ? 'relative' : 'absolute',
-            paddingLeft: vertical ? 15 : null
+            paddingLeft: vertical ? 15 : null,
+            display: this.state.onHover ? null : 'none'
         }
 
         if (vertical) {
@@ -82,8 +96,8 @@ export default class SubMenu extends React.Component {
 
         return (
             <div {...others} className={classes}
-                             onMouseEnter={this.handleMouseEnter.bind(this)}
-                             onMouseLeave={this.handleMouseLeave.bind(this)}>
+                 onMouseEnter={this.handleMouseEnter.bind(this)}
+                 onMouseLeave={this.handleMouseLeave.bind(this)}>
                 <div onClick={this.handleClick.bind(this)}
                      className="text-label"
                      style={containerStyle}>
@@ -91,11 +105,11 @@ export default class SubMenu extends React.Component {
                     <i className={caretClass}
                        style={{marginLeft:10}}/>
                 </div>
-                {this.state.onHover ?
-                    <div className="sub-list"
-                         style={subList}>
-                        {Children}
-                    </div> : null}
+
+                <div className="sub-list"
+                     style={subList}>
+                    {Children}
+                </div>
             </div>
         )
     }
