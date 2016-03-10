@@ -10,39 +10,47 @@ export default class MenuItem extends React.Component {
     }
 
     render() {
-        let inverse = this.props.inverse
-        if (this.props.globalInverse) {
-            inverse = !inverse
+        const {className, inverse, globalInverse, brand, vertical, to, onClick, height, minHeight, children, ...others} = this.props
+
+        let isInverse = inverse
+        if (globalInverse) {
+            isInverse = !inverse
         }
 
-        let className = classNames({
+        const classes = classNames({
             '_namespace': true,
-            'brand': this.props.brand,
-            'inverse': inverse,
-            'vertical': this.props.vertical,
-            'text-label': true
+            'brand': brand,
+            'inverse': isInverse,
+            'vertical': vertical,
+            'text-label': true,
+            [className]: className
         })
 
-        let style = {...this.props.style}
-        style.minHeight = this.props.height || this.props.minHeight || style.height || style.minHeight
+        others.style = others.style || {}
+        others.style.minHeight = height || minHeight
 
-        if (this.props.to) {
+        if (to) {
             return (
-                <Link {...this.props} style={style}
-                                      className={className}
-                                      to={this.props.to}>{this.props.children}</Link>
+                <Link {...others} className={classes}
+                                  to={to}>{children}</Link>
             )
         }
 
         return (
-            <div {...this.props} style={style}
-                                 className={className}
-                                 onClick={this.props.onClick}>{this.props.children}</div>
+            <div {...others} className={classes}
+                             onClick={onClick}>{children}</div>
         )
     }
 }
 
 MenuItem.defaultProps = {
+    // @desc 点击的回调
     onClick: ()=> {
-    }
+    },
+
+    // @desc 是否反色
+    inverse: false,
+
+    // @desc 路由地址
+    to: null
 }

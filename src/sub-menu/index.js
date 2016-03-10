@@ -32,58 +32,62 @@ export default class SubMenu extends React.Component {
     }
 
     render() {
-        let inverse = this.props.inverse
+        const {className, inverse, brand, vertical, height, width, children, zIndex, title, ...others} = this.props
+
+        let isInverse = inverse
         if (this.props.globalInverse) {
-            inverse = !inverse
+            isInverse = !inverse
         }
 
-        let className = classNames({
+        const classes = classNames({
             '_namespace': true,
-            'brand': this.props.brand,
-            'inverse': inverse,
-            'vertical': this.props.vertical
+            'brand': brand,
+            'inverse': isInverse,
+            'vertical': vertical,
+            [className]: className
         })
 
         let containerStyle = {
-            minHeight: this.props.height,
-            width: this.props.width
+            minHeight: height,
+            width: width
         }
 
-        let Children = React.Children.map(this.props.children, (item)=> {
+        others.style = Object.assign({}, containerStyle, others.style)
+
+        let Children = React.Children.map(children, (item)=> {
             return React.cloneElement(item, {
-                minHeight: this.props.height,
-                zIndex: this.props.zIndex + 1,
-                vertical: this.props.vertical
+                minHeight: height,
+                zIndex: zIndex + 1,
+                vertical: vertical
             })
         })
 
         let caretClass = classNames({
             'fa': true,
-            'fa-caret-down': this.props.vertical || this.props.zIndex === 0,
-            'fa-caret-right': !this.props.vertical && this.props.zIndex > 0
+            'fa-caret-down': vertical || zIndex === 0,
+            'fa-caret-right': !vertical && zIndex > 0
         })
 
         let subList = {
-            top: this.props.zIndex === 0 ? '100%' : 0,
-            left: this.props.zIndex === 0 ? 0 : '100%',
-            position: this.props.vertical ? 'relative' : 'absolute',
-            paddingLeft: this.props.vertical ? 15 : null
+            top: zIndex === 0 ? '100%' : 0,
+            left: zIndex === 0 ? 0 : '100%',
+            position: vertical ? 'relative' : 'absolute',
+            paddingLeft: vertical ? 15 : null
         }
 
-        if (this.props.vertical) {
+        if (vertical) {
             subList.top = null
             subList.left = null
         }
 
         return (
-            <div style={containerStyle}
-                 className={className}
-                 onMouseEnter={this.handleMouseEnter.bind(this)}
-                 onMouseLeave={this.handleMouseLeave.bind(this)}>
+            <div {...others} className={classes}
+                             onMouseEnter={this.handleMouseEnter.bind(this)}
+                             onMouseLeave={this.handleMouseLeave.bind(this)}>
                 <div onClick={this.handleClick.bind(this)}
                      className="text-label"
                      style={containerStyle}>
-                    {this.props.title}
+                    {title}
                     <i className={caretClass}
                        style={{marginLeft:10}}/>
                 </div>

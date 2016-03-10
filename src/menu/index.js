@@ -9,30 +9,33 @@ export default class Menu extends React.Component {
     }
 
     render() {
-        let childs = React.Children.map(this.props.children, (child, index)=> {
+        const {className, inverse, vertical, height, width, children, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            'inverse': inverse,
+            'vertical': vertical,
+            [className]: className
+        })
+
+        let childs = React.Children.map(children, (child, index)=> {
             return React.cloneElement(child, {
                 key: index,
-                globalInverse: this.props.inverse,
-                vertical: this.props.vertical,
-                height: this.props.height,
+                globalInverse: inverse,
+                vertical: vertical,
+                height: height,
                 zIndex: 0
             })
         })
 
-        let containerClassname = classNames({
-            '_namespace': true,
-            'inverse': this.props.inverse,
-            'vertical': this.props.vertical
-        })
-
         let containerStyle = {
-            height: !this.props.vertical ? this.props.height : null,
-            width: this.props.vertical ? this.props.width : null
+            height: !vertical ? height : null,
+            width: vertical ? width : null
         }
 
+        others.style = Object.assign({}, containerStyle, others.style)
+
         return (
-            <div className={containerClassname}
-                 style={Object.assign({},this.props.style,containerStyle)}>
+            <div {...others} className={classes}>
                 {childs}
             </div>
         )
