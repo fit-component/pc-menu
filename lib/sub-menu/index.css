@@ -51,4 +51,5 @@
   .lib-pc-menu-lib-sub-menu .sub-list {
     -webkit-transition: height 0.2s ease-in-out 0s;
     transition: height 0.2s ease-in-out 0s;
-    background: white; }
+    background: white;
+    z-index: 3; }
