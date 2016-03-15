@@ -48,15 +48,15 @@ export default class MenuItem extends React.Component {
             [className]: className
         })
 
+        others.style = others.style || {}
+        others.style.minHeight = height || minHeight
+
         if (to) {
             return (
                 <Link {...others} className={classes}
                                   to={to}>{children}</Link>
             )
         }
-
-        others.style = others.style || {}
-        others.style.minHeight = height || minHeight
 
         return (
             <div {...others} className={classes}
