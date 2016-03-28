@@ -1,6 +1,6 @@
 {
   "name": "fit-menu",
-  "version": "2.0.37",
+  "version": "2.0.50",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fit-style": "^2.0.37",
+    "fit-style": "^2.0.50",
     "react": "^0.14.7",
     "classnames": "^2.2.1",
     "react-router": "^2.0.0"
