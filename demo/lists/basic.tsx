@@ -1,7 +1,7 @@
-import React from 'react'
-import { Menu, SubMenu, MenuItem } from 'fit-menu'
+import * as React from 'react'
+import { Menu, SubMenu, MenuItem } from '../../src'
 
-export default class Demo extends React.Component {
+export default class Basic extends React.Component<any, any> {
     handleClick() {
         console.log('菜单基础用法,点击')
     }

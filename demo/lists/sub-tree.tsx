@@ -1,17 +1,15 @@
-import React from 'react'
-import { Menu, SubMenu, MenuItem } from 'fit-menu'
+import * as React from 'react'
+import { Menu, SubMenu, MenuItem } from '../../src'
 
-export default class Demo extends React.Component {
+export default class SubTree extends React.Component<any, any> {
     render() {
         return (
-            <Menu vertical>
+            <Menu>
                 <MenuItem to="/">组件库</MenuItem>
-                <SubMenu title="子菜单一"
-                         showType="click">
+                <SubMenu title="子菜单一">
                     <MenuItem to="/components/pc/input">输入框组件</MenuItem>
                     <MenuItem to="/components/pc/switch">开关</MenuItem>
-                    <SubMenu title="子菜单二"
-                             showType="click">
+                    <SubMenu title="子菜单二">
                         <MenuItem to="/components/pc/input">输入框组件</MenuItem>
                         <MenuItem to="/components/pc/switch">开关</MenuItem>
                     </SubMenu>

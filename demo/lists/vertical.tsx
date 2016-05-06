@@ -1,7 +1,7 @@
-import React from 'react'
-import { Menu, SubMenu, MenuItem } from 'fit-menu'
+import * as React from 'react'
+import { Menu, SubMenu, MenuItem } from '../../src'
 
-export default class Demo extends React.Component {
+export default class Vertical extends React.Component<any, any> {
     render() {
         return (
             <div>
