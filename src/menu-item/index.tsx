@@ -25,7 +25,6 @@ export default class MenuItem extends React.Component<module.PropsInterface, mod
 
     constructor(props: any, context: any) {
         super(props, context)
-        this.state = {}
     }
 
     componentWillMount() {
@@ -66,8 +65,8 @@ export default class MenuItem extends React.Component<module.PropsInterface, mod
 
         if (to) {
             return (
-                <Link {...others} className={classes}
-                                  to={to}>{children}</Link>
+                <Link {...otherProps} className={classes}
+                                      to={to}>{children}</Link>
             )
         }
 

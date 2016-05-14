@@ -11,9 +11,6 @@ export default class SubMenu extends React.Component<module.PropsInterface, modu
 
     constructor(props: any, context: any) {
         super(props, context)
-        this.state = {
-            onHover: false
-        }
     }
 
     handleMouseEnter() {

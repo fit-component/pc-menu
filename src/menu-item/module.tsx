@@ -1,3 +1,15 @@
+export interface IRouter {
+    isActive(location: any, type: boolean): boolean
+}
+
+export interface IRouterContext {
+    router: IRouter;
+}
+
+export interface ISomeOtherContext {
+    somethingElse: any;
+}
+
 export interface PropsInterface {
     onClick?: Function
 
@@ -22,18 +34,6 @@ export class Props implements PropsInterface {
     to = ''
 
     vertical = false
-}
-
-export interface IRouter {
-    isActive(location: any, type: boolean): boolean
-}
-
-export interface IRouterContext {
-    router: IRouter;
-}
-
-export interface ISomeOtherContext {
-    somethingElse: any;
 }
 
 export interface StateInterface {

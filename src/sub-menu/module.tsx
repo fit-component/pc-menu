@@ -31,7 +31,7 @@ export class Props implements PropsInterface {
 }
 
 export interface StateInterface {
-    onHover: boolean
+    onHover?: boolean
 }
 
 export class State implements StateInterface {

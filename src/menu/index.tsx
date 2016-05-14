@@ -5,14 +5,12 @@ import './index.scss'
 import {others} from '../../../../common/transmit-transparently/src'
 import ReactElement = __React.ReactElement;
 
-
 export default class Menu extends React.Component<module.PropsInterface, module.StateInterface> {
     static defaultProps = new module.Props()
     public state = new module.State()
 
     constructor(props: any, context: any) {
         super(props, context)
-        this.state = {}
     }
 
     render() {
