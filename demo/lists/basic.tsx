@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Menu, SubMenu, MenuItem } from '../../src'
+import {Menu, SubMenu, MenuItem} from '../../src'
 
 export default class Basic extends React.Component<any, any> {
     handleClick() {
