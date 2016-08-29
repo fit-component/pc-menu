@@ -61,13 +61,16 @@ export default class MenuItem extends React.Component<module.PropsInterface, mod
         })
 
         otherProps.style = otherProps.style || {}
-        otherProps.style.minHeight = height || minHeight
+
+        if (vertical) {
+            otherProps.style.minHeight = height || minHeight
+        }
 
         if (to) {
             delete otherProps.brand;
             delete otherProps.globalInverse;
             delete otherProps.zIndex;
-            
+
             return (
                 <Link {...otherProps} className={classes}
                                       to={to}>{children}</Link>
