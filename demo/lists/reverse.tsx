@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Menu, SubMenu, MenuItem } from '../../src'
+import { Menu, RightMenu, MenuItem } from '../../src'
 
 const itemStyle = {
   width: 200
@@ -44,6 +44,19 @@ export default class Reverse extends React.Component<any, any> {
                               style={itemStyle}>管理系统</MenuItem>
                     <MenuItem>菜单项</MenuItem>
                     <MenuItem>菜单项</MenuItem>
+                </Menu>
+
+                <Menu inverse
+                      style={menuStyle}>
+                    <MenuItem brand
+                              inverse
+                              style={itemStyle}>管理系统</MenuItem>
+                    <MenuItem>菜单项</MenuItem>
+                    <MenuItem>菜单项</MenuItem>
+                    <RightMenu>
+                        <MenuItem>靠右菜单2</MenuItem>
+                        <MenuItem>靠右菜单1</MenuItem>
+                    </RightMenu>
                 </Menu>
             </div>
         )

@@ -1,28 +1,29 @@
 @import "../../../../../style/components/menu";
 
 & {
-  @include menu-button;
-  display: flex;
-  align-items: center;
-  transition: color .2s;
-
-  &.active {
-    color: #1c9aa0;
-  }
-
-  &.active:hover {
-    color: #1c9aa0;
-  }
-
-  &.text-label {
+    @include menu-button;
     display: flex;
     align-items: center;
-    padding: 0 15px;
-    white-space: nowrap;
-    text-decoration: none;
-    &:hover {
-      color: #1c9aa0;
-      text-decoration: none;
+    transition: color .2s;
+    background: white;
+
+    &.active {
+        color: #1c9aa0;
     }
-  }
+
+    &.active:hover {
+        color: #1c9aa0;
+    }
+
+    &.text-label {
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        white-space: nowrap;
+        text-decoration: none;
+        &:hover {
+            color: #1c9aa0;
+            text-decoration: none;
+        }
+    }
 }
