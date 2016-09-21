@@ -4,7 +4,7 @@ import { Menu, SubMenu, MenuItem } from '../../src'
 export default class SubTreeVertical extends React.Component<any, any> {
     render() {
         return (
-            <Menu vertical>
+            <Menu >
                 <MenuItem to="/">组件库</MenuItem>
                 <SubMenu title="子菜单一"
                          showType="click">
