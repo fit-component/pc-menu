@@ -1,7 +1,9 @@
 import * as React from 'react'
-import {others} from '../../../../common/transmit-transparently/src'
+import * as classNames from 'classnames'
 import * as module from './module'
 import './index.scss'
+import {others} from '../../../../common/transmit-transparently/src'
+import ReactElement = __React.ReactElement;
 
 export default class RightMenu extends React.Component<module.PropsInterface, module.StateInterface> {
     static defaultProps = new module.Props()
@@ -12,15 +14,41 @@ export default class RightMenu extends React.Component<module.PropsInterface, mo
     }
 
     render() {
-        let childs = React.Children.map(this.props.children, (child: React.ReactElement<any>, index: number)=> {
+        const {className, inverse, globalInverse, vertical, height, width, children} = this.props
+
+        let otherProps = others(new module.Props(), this.props)
+
+        let isInverse = inverse
+        if (globalInverse) {
+            isInverse = !inverse
+        }
+
+        const classes = classNames({
+            '_namespace': true,
+            'inverse': isInverse,
+            'vertical': vertical,
+            [className]: className
+        })
+
+        let childs = React.Children.map(children, (child: ReactElement<any>, index: number)=> {
             return React.cloneElement(child, {
                 key: index,
-                inverse: this.props.globalInverse
+                globalInverse: isInverse,
+                vertical: vertical,
+                height: height,
+                zIndex: 0
             })
         })
 
+        let containerStyle = {
+            height: !vertical ? height : null,
+            width: vertical ? width : null
+        }
+
+        otherProps.style = Object.assign({}, containerStyle, otherProps.style)
+
         return (
-            <div className="_namespace">
+            <div {...otherProps} className={classes}>
                 {childs}
             </div>
         )
